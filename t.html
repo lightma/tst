@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-csp>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body data-ng-controller="ProductsController">
+  <!--nav-->
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse"
+          data-target=".nav-collapse">
+          <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+            class="icon-bar"></span>
+        </button>
+        <a class="brand" href="#">My AngularJS App</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav pull-right">
+            <li class="dropdown pull-right"><a href="#"
+              class="dropdown-toggle" data-toggle="dropdown">²Ëµ¥²âÊÔ <b
+                class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">123</a></li>
+                <li><a href="#">234</a></li>
+                <li><a href="#">345</a></li>
+              </ul></li>
+          </ul>
+          <p class="navbar-text">nav</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--left side-->
+  <div class="container-fluid" style="height: 100%; overflow: hidden;">
+    <div class="row-fluid " style="height: 100%; overflow: hidden;">
+
+      <div class="span9 " style="height: 100%; overflow: hidden;">
+        
+        <div class="row-fluid" id="">
+          <div class="span8">
+            <ul class="nav nav-tabs">
+              <li class="active span5 text-center" id="by-search"><a
+                href="#">Home</a></li>
+              <li class="span5 text-center" id="by-type"><a href="#">123</a></li>
+            </ul>
+          </div>
+          <div class="span1">
+            <a class="btn btn-primary" href="#" id="add-button"> new </a>
+          </div>
+        </div>
+
+        <div class="row-fluid" id="search-div">
+          <div class="input-append span9">
+            <input class="span9" type="text" placeholder="name or code">
+            <button class="btn" type="button">search!</button>
+          </div>
+        </div>
+
+        <div class="row-fluid hide" id="mainType-div">
+          <div class="span9">
+            <ul class="nav nav-tabs">
+              <li class="active span2 text-center"><a href="#">Home</a></li>
+              <li class="span2 text-center"><a href="#">123</a></li>
+              <li class="span2 text-center"><a href="#">123</a></li>
+              <li class="span2 text-center"><a href="#">123</a></li>
+              <li class="span2 text-center"><a href="#">123</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row-fluid hide" id="subType-div">
+          <div class="span4">
+            <p class="navbar-text">type1</p>
+          </div>
+          <div class="span4">
+            <p class="navbar-text">type2</p>
+          </div>
+          <div class="span4">
+            <p class="navbar-text">type3</p>
+          </div>
+        </div>
+
+
+        <div class="row-fluid products" data-ng-repeat="product in products" id="{{product.code}}">
+          <div class="span2">
+            <img "media-object" data-ng-src="{{product.icon}}">
+          </div>
+          <div class="span3">
+            <p>
+              {{product.code}}
+            </p>
+          </div>
+          <div class="span2">
+            <p>
+              {{product.name}}
+            </p>
+          </div>
+          <div class="span2">
+            <p>
+              {{product.type}}
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+<!--right side-->
+      <div class="span3" id="import-div">
+        <div class="row-fluid">
+          <a title="12">df </a>
+        </div>
+        <!--/row-->
+        <div class="row-fluid">
+          <div class="thumbnail">
+            <p>import</p>
+          </div>
+        </div>
+      </div>
+
+<!--right side detail-->
+      <div class="span3 hide" id="detail-div">
+        <div class="row-fluid">
+          <button id="detail-close-button" class="close pull-right">&times;</button>
+        </div>
+        <div class="row-fluid">
+          <div class="span2">
+            <div class="row-fluid">
+              <p id="detail-name">name</p>
+              <i class="icon-edit"></i>
+            </div>
+            <div class="row-fluid">
+              <p id="detail-type">type</p>
+              <i class="icon-edit"></i>
+            </div>
+          </div>
+          <div class="span1 pull-right">
+            <img src="" class="img-polaroid">
+          </div>
+        </div>
+        <div class="row-fluid">
+          <div class="span1">
+            <p>1</p>
+          </div>
+          <div class="span1">
+            <p>1</p>
+          </div>
+          <div class="span1">
+            <p>ÐÞ</p>
+          </div>
+        </div>
+
+        <div class="row-fluid">
+          <div class="span1">
+            <h3>1</h3>
+          </div>
+          <div class="span1">
+            <h3>1</h3>
+          </div>
+          <div class="span1">
+            <h3>µ÷</h3>
+          </div>
+        </div>
+
+        <table class="table table-bordered table-hover">
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <!--/row-->
+
+  </div>
+
+<!--add dialog-->
+  <div class="modal hide fade" id="add-div">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"
+        aria-hidden="true">&times;</button>
+      <h3>Add</h3>
+    </div>
+    <form class="form-signin" method="post"
+      action="#">
+      <div class="modal-body">
+
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="text" class="input-block-level" id="form-name" placeholder="name"> 
+        <input type="text" class="input-block-level" id="form-code" placeholder="code"> 
+        <input type="text" class="input-block-level" id="form-type" placeholder="type">
+        <input type="text" class="input-block-level" id="form-unit" placeholder="unit"> 
+        <input type="text" class="input-block-level" id="form-cost" placeholder="cost"> 
+        <input type="text" class="input-block-level" id="form-number" placeholder="number">
+        <label class="checkbox"> <input type="checkbox" id="form-enabled" value="enabled"> enabled </label>
+        <div id="msg-div" class="alert fade">add ok.</div>
+      </div>
+      <div class="modal-footer">
+        <button id="form-add" class="btn btn-primary">yes</button>
+        <button class="btn btn-primary" data-dismiss="modal">back</button>
+      </div>
+    </form>
+  </div>
+
+
+  <script src="js/angular.js"></script>
+  <script src="js/jquery-1.7.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

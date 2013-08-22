@@ -1,0 +1,265 @@
+html, body {
+	height: 100%;
+}
+body ::-webkit-scrollbar {
+  height: 16px;
+  width: 12px;
+}
+body ::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, .1);
+  background-clip: padding-box;
+  border: solid transparent;
+  min-height: 28px;
+  padding: 10px 0 0;
+  box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);
+  border-width: 1px 1px 1px 6px;
+}
+body ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+body ::-webkit-scrollbar-button {
+  height: 0;
+  width: 0;
+}
+::-webkit-scrollbar-track {
+  background-clip: padding-box;
+  border: solid transparent;
+  border-width: 0 0 0 4px;
+}
+body ::-webkit-scrollbar-corner {
+  background: transparent;
+}
+.wrapper {
+	position: relative;
+	min-height: 100%;
+	height: 100%;
+	padding-top: 50px;
+}
+.full-height {
+	height: 100%;
+}
+.table-wrapper {
+	position: absolute;
+	height: 100%;
+	overflow: auto;
+	padding: 0;
+	margin: 0;
+}
+
+.my-table {
+	table-layout: fixed;
+}
+
+.my-table th,td {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.left-nav {
+	background-color: #3a3f44;
+}
+.left-nav hr, .products-container hr, .product-detail-container hr{
+	margin: 10px 0;
+}
+.sale-list {
+	margin-left: 0;
+	position: relative;
+	height: 50%;
+	margin: 0;
+	overflow: hidden;
+}
+.row .sale-list, .row .total {
+	margin: 0;
+}
+.sale-list > ul {
+	height: 99%;
+	overflow: auto;
+	overflow-x: hidden;
+}
+.sale-list > ul > li {
+	background-color: transparent;
+}
+.sale-list > ul > li > a{
+	width: 100%;
+	display: inline-block;
+	text-decoration: none;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.sale-list > ul > li > a > span.cursor{
+	margin-left: -17px;
+}
+.sale-list > ul > li > a:hover {
+	background-color: #202328;
+	cursor: default;
+	color: #fff;
+}
+span.sale-cnt {
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+span.sale-product {
+	margin-left: 0.5em;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 46%;
+    display: inline-block;
+}
+span.sale-sub-total {
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: right;
+    width: 32%;
+    display: inline-block;
+}
+.total {
+	position: relative;
+	height: 32%;
+	overflow: hidden;
+	padding: 0;
+}
+span.stub {
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: right;
+	width: 20%;
+    display: inline-block;
+}
+span.sub-total {
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: right;
+	width: 58%;
+    display: inline-block;
+}
+.sale-total {
+	font-size: 24px;
+	margin-top: 1.5em;
+}
+.total > ul {
+	font-size: 1.4em;
+	height: 100%;
+	overflow: auto;
+	overflow-x: hidden;
+	padding: 0 3px;
+}
+.total > ul > li > a{
+	width: 99%;
+	display: inline-block;
+	text-decoration: 
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 3px 12px;
+}
+.rgt {
+	display: inline-block;
+	text-align: right;
+	width: 73%;
+}
+.settlement {
+	height: 18%;
+	position: relative;
+	padding: 0 3px 3px 0;
+}
+.buttons {
+	position: absolute;
+	bottom:0;
+	right:0.5em;
+	width: 100%;
+	padding: 0.5em;
+	text-align: right;
+}
+.buttons > button {
+	display: inline-block;
+	min-width: 40%;
+}
+.row .products-container {
+	margin-left: 0;
+	margin-right: 0;
+	border-left: 1px solid #1c1e22;
+}
+.products-container {
+	position: relative;
+	background-color: #3a3f44;
+}
+.row .search-container {
+	margin-left: 0;
+	margin-right: 0;
+}
+.search-container {
+	position: relative;
+	height: 12%;
+}
+.search-form {
+	position: absolute;
+	bottom: 0;
+	margin: 0;
+}
+.search-form .search {
+	padding-left: 25px;
+	width: 80%;
+}
+.search-form .glyphicon-barcode{
+	position: absolute;
+	top: 10px;
+	left: 18px;
+}
+.row .product-list {
+	margin-left: 0;
+	margin-right: 0;
+}
+.product-list {
+	background: transparent;
+	height: 84%;
+	border: none;
+	-webkit-box-shadow: none;
+	overflow: auto;
+	overflow-x: hidden;
+}
+.product-row {
+	padding: 2px 0;
+}
+.thumbnail {
+	border: none;
+}
+.thumbnail .caption {
+	color: rgb(200, 200, 200);
+	padding: 3px 0;
+}
+.thumbnail .caption div{
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.row .product-detail-container {
+	margin: 0;
+}
+.op-panel {
+	border-left: 1px solid #1c1e22;
+	background-color: #3a3f44;
+}
+.product-detail-container {
+	height: 48%;
+	overflow: hidden;
+}
+.product-sub-total-container {
+	height: 20%;
+}
+.detail-buttons {
+	position: relative;
+	height: 32%;
+	overflow:hidden;
+}
+.detail-buttons .buttons .button {
+	margin-top: 10px;
+}
+.detail-buttons .buttons .button > button {
+	min-width: 40%;
+}

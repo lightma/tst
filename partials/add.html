@@ -1,0 +1,14 @@
+<div class="hero-unit">
+    <div id="msg-div" class="alert fade"></div>
+    <p>Add a new item:<br>
+    <form ng-submit="addProduct()">
+    	<input type="text" ng-model="code" size="30" placeholder="product code">
+        <input type="text" ng-model="name" size="30" placeholder="product name">
+        <input type="text" ng-model="type" size="30" placeholder="product type">
+        <input type="text" ng-model="addr" size="30" placeholder="product addr">
+        <input type="text" ng-model="spec" size="30" placeholder="product spec">
+        <button class="btn-primary" type="submit"><i class="icon-plus icon-white"></i></button>
+        <a class="btn btn-primary" href="#/list/"> back </a>
+    </form>
+    </p>
+</div>
