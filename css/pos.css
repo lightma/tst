@@ -99,6 +99,7 @@ span.sale-cnt {
 	overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    vertical-align: middle;
 }
 span.sale-product {
 	margin-left: 0.5em;
@@ -107,6 +108,7 @@ span.sale-product {
     text-overflow: ellipsis;
     width: 46%;
     display: inline-block;
+    vertical-align: middle;
 }
 span.sale-sub-total {
 	overflow: hidden;
@@ -115,6 +117,7 @@ span.sale-sub-total {
     text-align: right;
     width: 32%;
     display: inline-block;
+    vertical-align: middle;
 }
 .total {
 	position: relative;
@@ -201,15 +204,16 @@ span.sub-total {
 	position: absolute;
 	bottom: 0;
 	margin: 0;
+	padding-left: 0;
 }
 .search-form .search {
 	padding-left: 25px;
-	width: 80%;
+	width: 90%;
 }
 .search-form .glyphicon-barcode{
 	position: absolute;
 	top: 10px;
-	left: 18px;
+	left: 5px;
 }
 .row .product-list {
 	margin-left: 0;

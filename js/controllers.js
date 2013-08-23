@@ -13,7 +13,7 @@ angular.module('myApp.controllers', []).
       $scope.byType = function(){
         $scope.byWhat = "byType";
         $scope.types = ["1","2"];
-        //$scope.$apply();
+        // $scope.$apply();
       };
       $scope.bySearch = function(){
         $scope.byWhat = "bySearch";
@@ -65,10 +65,8 @@ angular.module('myApp.controllers', []).
   })
   .controller('WarehouseAddCtrl', function ($scope,$location,DB) {
     /*
-    setTimeout(function () {
-        $('#msg-div').removeClass('in')
-    }, 4000);
-    */
+	 * setTimeout(function () { $('#msg-div').removeClass('in') }, 4000);
+	 */
     $scope.addProduct = function(){	
       DB.insert('products',{'code': $scope.code, 
         'name' : $scope.name,
@@ -118,7 +116,7 @@ angular.module('myApp.controllers', []).
           {
             if(count<1)
             {
-              $http({method: 'GET', url: 'http://10.7.124.21/~/daoler/warehouses/test2'}).
+              $http({method: 'GET', url: 'http://10.7.124.21/~oliverwang/daoler/warehouses/test2'}).
               success(function(data, status, headers, config) {
                 for(var index in data){
                       DB.insert('products',{'code': data[index].c, 
@@ -132,7 +130,7 @@ angular.module('myApp.controllers', []).
                 $location.path('/wlist');
               }).
               error(function(data, status, headers, config) {
-                //无数据，且无法下载数据
+                // 无数据，且无法下载数据
                 DB.insert('products',{'code': '12344565657', 
                           'name' : 'test',
                           'type' : 1,
@@ -149,4 +147,31 @@ angular.module('myApp.controllers', []).
           });
       });
     }
-}]);
+}]).controller('PosCtrl', function($scope){
+	
+}).controller('PosProductsListCtrl', function ($scope) {
+	var product = function(){
+		this.name = "UGG哈哈这个鞋子不错喔",
+		this.cost = 20;
+		this.spec = "12*250ml";
+		this.img = "img/shoes1.jpg";
+		this.idx = 0;
+	};
+	product.prototype.setIdx = function(idx) {
+		this.idx = idx;
+	};
+	var repeat = 23, rowMax = 4;
+	var products = [];
+	for (var i=0,row=-1; i<repeat; i++) {
+		if (i % rowMax == 0) {
+			++ row;
+			products[row] = [];
+		}
+		var p = new product();
+		p.setIdx(i);
+		products[row].push(p);
+	}
+	$scope.products = products;
+}).controller('PosActCtrl', function($scope){
+	
+});

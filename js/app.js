@@ -18,7 +18,8 @@ angular.module('myApp', ['myApp.controllers', 'myApp.services','ngCookies']).
     $routeProvider.when('/wadd', {templateUrl: 'warehouse/add.html', controller: 'WarehouseAddCtrl',access:access.admin});
     $routeProvider.when('/login', {templateUrl: 'public/login.html', controller: 'LoginCtrl',access:access.anon});
     $routeProvider.when('/init', {templateUrl: 'public/init.html', controller: 'InitCtrl',access:access.admin});
-    $routeProvider.otherwise({redirectTo: '/init',access:access.admin});
+    $routeProvider.when('/pos', {templateUrl: 'pos/pos.html', controller: 'PosCtrl',access:access.admin});
+    $routeProvider.otherwise({redirectTo: '/pos'});
   }]).
   run(['$rootScope', '$location', 'Auth','DB', function ($rootScope, $location, Auth) {
         chrome.storage.local.get('user',function(value){
