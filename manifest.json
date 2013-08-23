@@ -11,5 +11,6 @@
   "icons": {
     "16": "img/icon-16.png",
     "128": "img/icon-128.png"
-  }
+  },
+  "permissions": ["storage","http://10.7.124.21/~/daoler/warehouses"]
 }
