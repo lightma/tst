@@ -10,23 +10,30 @@ angular.module('myApp.controllers', []).
       $scope.new = function() {
         $location.path('/wadd');
       };
+      $scope.import = function() {
+        //$location.path('/wadd');
+      };
       $scope.byType = function(){
         $scope.byWhat = "byType";
-        $scope.types = ["1","2"];
-        //$scope.$apply();
+        $scope.types = ["饮料","食品","日化","调味品","香烟","其他"];
       };
       $scope.bySearch = function(){
         $scope.byWhat = "bySearch";
+        //$scope.$apply();
       }
       $scope.change = function(){
+        
         var searchText = this.searchText;
-        $scope.sProducts = []; 
+        $scope.products = []; 
         if(searchText.length>7&&!isNaN(searchText))
         {
-            DB.fetchOne('products',searchText,function(products) {
-                if(products)
+            DB.fetchOne('products',searchText,function(product) {
+                if(product)
                 {
-                  $scope.sProducts =  [products];
+                  var products = [];
+                  products[0] = [];
+                  products[0].push(product);
+                  $scope.products =  products;
                   $scope.$apply();
                 }
             });
@@ -34,20 +41,67 @@ angular.module('myApp.controllers', []).
       }
       $scope.getType = function(type){
         $scope.selectedType = type;
-        if(type!='all')
+
+        if(type!='全部')
         {
-            DB.fetchItemsByIndex('products','typeIndex',type,function(products) {
-                $scope.tProducts =  products;
-                $scope.$apply();
+            DB.fetchItemsByIndex('products','typeIndex',type,function(sproducts) {
+              var products = [];
+              var len = sproducts.length;
+              var rowMax = 6;
+              for(var i=0,row=-1; i<len; i++)
+              {
+                if (i % rowMax == 0) {
+                    ++ row;
+                    products[row] = [];
+                  }
+                  products[row].push(sproducts[i]);
+              }
+              $scope.products =  products;
+              $scope.$apply();
             });
         }
         else
         {
-            DB.fetchAll('products',function(products) {
-                $scope.tProducts =  products;
-                $scope.$apply();
+            DB.fetchAll('products',function(sproducts) {
+              var products = [];
+              var len = sproducts.length;
+              var rowMax = 6;
+              for(var i=0,row=-1; i<len; i++)
+              {
+                if (i % rowMax == 0) {
+                    ++ row;
+                    products[row] = [];
+                  }
+                  products[row].push(sproducts[i]);
+              }
+              $scope.products =  products;
+              $scope.$apply();
             });
         }
+        /*
+        var product = function(){
+          this.name = "UGG哈哈这个鞋子不错喔",
+          this.cost = 20;
+          this.spec = "12*250ml";
+          this.img = "img/shoes1.jpg";
+          this.idx = 0;
+        };
+        product.prototype.setIdx = function(idx) {
+          this.idx = idx;
+        };
+        var repeat = 51, rowMax = 6;
+        var products = [];
+        for (var i=0,row=-1; i<repeat; i++) {
+          if (i % rowMax == 0) {
+            ++ row;
+            products[row] = [];
+          }
+          var p = new product();
+          p.setIdx(i);
+          products[row].push(p);
+        }
+        $scope.products = products;
+        */
       }
       
   })

@@ -1,4 +1,128 @@
-<!--left side-->
+<div class="row full-height">
+  <input type="hidden" ng-model="byWhat" ng-init="byWhat='bySearch';">
+  <div class="col-lg-12 full-height" ng-switch on="byWhat">
+    <!-- product list -->
+    
+
+      <div class="col-lg-9 full-height products-container" ng-switch-when="bySearch">
+        <div class="row search-container">
+          <h5>商品</h5>
+          <hr>
+          <form class="col-lg-12 navbar-form search-form">
+            <input type="text" class="form-control search" ng-model="searchText" ng-change="change()" placeholder="按 条形码 或 商品名称/拼音首写字母 查找">
+              <div class="glyphicon glyphicon-barcode"></div>
+            </input>
+            <input type="button" class="btn btn-info settle glyphicon pull-right" ng-click='byType()' value="目录"></input>
+          </form>
+        </div>
+        <hr>
+        <div class="row product-list">
+          <div class="row product-row" ng-repeat="row in products">
+            <div class="col-lg-2" ng-repeat="product in row">
+              <div class="thumbnail">
+                <img ng-src="{{product.img}}" class="img-responsive" alt="{{product.name}}">
+                <div class="caption">
+                  <div class="name">{{product.name}}</div>
+                  <div class="spec">{{product.spec}}</div>
+                  <!-- div class="idx">{{product.idx}}</div -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-9 full-height products-container" ng-switch-when="byType">
+        <div class="row search-container">
+          <h5>商品</h5>
+          <hr>
+          <input type="hidden" ng-model="selectedType" ng-init="selectedType='全部';getType(selectedType);">
+          <ul class="nav nav-tabs">
+            <li data-ng-repeat="type in types" ng-class="{active:selectedType==type}" ng-click='getType(type)'><a>{{type}}</a></li>
+            <li class="active" ng-class="{active:selectedType==type}" ng-click="getType('全部')"><a>全部</a></li>
+            <input type="button" class="btn btn-info settle glyphicon pull-right" ng-click='bySearch()' value="搜索"></input>
+          </ul>
+        </div>
+        <hr>
+        <div class="row product-list">
+          <div class="row product-row" ng-repeat="row in products">
+            <div class="col-lg-2" ng-repeat="product in row">
+              <div class="thumbnail">
+                <img ng-src="{{product.img}}" class="img-responsive" alt="{{product.name}}">
+                <div class="caption">
+                  <div class="name">{{product.name}}</div>
+                  <div class="spec">{{product.spec}}</div>
+                  <!--><a ng-click='detail(product.code)'>{{product.name}}</a><-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- /product list -->
+
+    <!-- product detail -->
+    <div class="col-lg-3 full-height op-panel pull-right">
+      <!-- detail -->
+      <div class="row product-detail-container">
+        <h5>商品详细</h5>
+        <hr>
+        <div class="thumbnail">
+          <img src="img/shoes1.jpg" class="img-responsive" alt="鞋子1">
+          <div class="caption">
+            <div class="name">品名：UGG哈哈这个鞋子不错喔，可以试穿的哈</div>
+            <div class="spec">规格：36码</div>
+            <div class="spec">产地：中国重庆</div>
+            <div class="spec">单位：双</div>
+            <div class="spec">单价：￥36.0</div>
+          </div>
+        </div>
+      </div>
+      <!-- /detail -->
+      <!-- sub total -->
+      <!-- div class="row product-sub-total-container">
+        <h5>商品小计</h5>
+        <hr>
+        <div class="product-cnt">数量：13</div>
+        <div class="product-sub-total">金额：￥443.0</div>
+      </div -->
+      <div class="row total product-sub-total-container">
+        <h5>小计</h5>
+        <hr>
+        <ul class="nav nav-list">
+          <li>
+            <a href="#">
+              <span class="text-left pull-left">数量</span>
+              <span class="text-right pull-right">20</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="text-left pull-left">金额</span>
+              <span class="text-right pull-right">￥400.0</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- /sub total -->
+      <!-- buttons -->
+      <div class="row detail-buttons">
+        <div class="buttons">
+        <div class="button">
+          <button type="button" class="btn btn-info btn-large settle glyphicon glyphicon-plus-sign" ng-click='new()'> 增加</button>
+          <button type="button" class="btn btn-success btn-large settle glyphicon glyphicon-minus-sign" ng-click='import()'> 导入</button>
+        </div>
+        </div>
+      </div>
+      <!-- /buttons -->
+    </div>
+    <!-- /product detail -->
+  </div>
+</div>
+
+
+<!--left side--一下是老版本>
 <div class="container-fluid" style="height: 100%; overflow: hidden;">
   <div class="row-fluid" id="">
     <div class="span9">
