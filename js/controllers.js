@@ -141,13 +141,18 @@ angular.module('myApp.controllers', []).
             }
             else
             {
-              $location.path('/wlist');
+              $location.path('/pos');
               $scope.$apply();
             }
           });
       });
     }
-}]).controller('PosCtrl', function($scope){
+}]).controller('PosCtrl', function($scope, fsm, ui){
+	$scope.searchTextChange = function(){
+		if ($scope.searchText != "" && fsm.state == "search") {
+			fsm.
+		}
+	};
 	
 }).controller('PosProductsListCtrl', function ($scope) {
 	var product = function(){
@@ -160,16 +165,12 @@ angular.module('myApp.controllers', []).
 	product.prototype.setIdx = function(idx) {
 		this.idx = idx;
 	};
-	var repeat = 23, rowMax = 4;
+	var repeat = 23;
 	var products = [];
-	for (var i=0,row=-1; i<repeat; i++) {
-		if (i % rowMax == 0) {
-			++ row;
-			products[row] = [];
-		}
+	for (var i=0; i<repeat; i++) {
 		var p = new product();
 		p.setIdx(i);
-		products[row].push(p);
+		products.push(p);
 	}
 	$scope.products = products;
 }).controller('PosActCtrl', function($scope){

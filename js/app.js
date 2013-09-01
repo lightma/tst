@@ -10,7 +10,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', ['myApp.controllers', 'myApp.services','ngCookies']).
+angular.module('myApp', ['myApp.controllers', 'myApp.services','ngCookies', 'fsm']).
   config(['$routeProvider', function($routeProvider) {
     var access = routingConfig.accessLevels;
     $routeProvider.when('/wlist', {templateUrl: 'warehouse/list.html', controller: 'WarehouseListCtrl',access:access.admin});
