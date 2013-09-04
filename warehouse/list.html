@@ -1,5 +1,6 @@
 <div class="row full-height">
   <input type="hidden" ng-model="byWhat" ng-init="byWhat='bySearch';">
+  <input type="hidden" ng-model="selectedType">
   <div class="col-lg-12 full-height" ng-switch on="byWhat">
     <!-- product list -->
     
@@ -17,9 +18,9 @@
         </div>
         <hr>
         <div class="row product-list">
-          <div class="row product-row" ng-repeat="row in products">
-            <div class="col-lg-2" ng-repeat="product in row">
-              <div class="thumbnail">
+          <div class="row product-row">
+            <div class="col-lg-2" ng-repeat="product in sproducts">
+              <div class="thumbnail" ng-click='detail(product.code)'>
                 <img ng-src="{{product.img}}" class="img-responsive" alt="{{product.name}}">
                 <div class="caption">
                   <div class="name">{{product.name}}</div>
@@ -36,23 +37,21 @@
         <div class="row search-container">
           <h5>商品</h5>
           <hr>
-          <input type="hidden" ng-model="selectedType" ng-init="selectedType='全部';getType(selectedType);">
           <ul class="nav nav-tabs">
             <li data-ng-repeat="type in types" ng-class="{active:selectedType==type}" ng-click='getType(type)'><a>{{type}}</a></li>
-            <li class="active" ng-class="{active:selectedType==type}" ng-click="getType('全部')"><a>全部</a></li>
+            <li ng-class="{active:selectedType=='全部'}" ng-click="getType('全部')"><a>全部</a></li>
             <input type="button" class="btn btn-info settle glyphicon pull-right" ng-click='bySearch()' value="搜索"></input>
           </ul>
         </div>
         <hr>
         <div class="row product-list">
-          <div class="row product-row" ng-repeat="row in products">
-            <div class="col-lg-2" ng-repeat="product in row">
-              <div class="thumbnail">
+          <div class="row product-row">
+            <div class="col-lg-2" ng-repeat="product in products">
+              <div class="thumbnail" ng-click='detail(product.code)'>
                 <img ng-src="{{product.img}}" class="img-responsive" alt="{{product.name}}">
                 <div class="caption">
                   <div class="name">{{product.name}}</div>
                   <div class="spec">{{product.spec}}</div>
-                  <!--><a ng-click='detail(product.code)'>{{product.name}}</a><-->
                 </div>
               </div>
             </div>
@@ -69,45 +68,37 @@
         <h5>商品详细</h5>
         <hr>
         <div class="thumbnail">
-          <img src="img/shoes1.jpg" class="img-responsive" alt="鞋子1">
+          <img ng-src="{{item.img}}" class="img-responsive" alt="{{item.name}}">
           <div class="caption">
-            <div class="name">品名：UGG哈哈这个鞋子不错喔，可以试穿的哈</div>
-            <div class="spec">规格：36码</div>
-            <div class="spec">产地：中国重庆</div>
-            <div class="spec">单位：双</div>
-            <div class="spec">单价：￥36.0</div>
+            <div class="name">{{item.name}}</div>
+            <div class="spec">{{item.type}}</div>
+            <div class="spec">{{item.spec}}</div>
+            <div class="spec">{{item.addr}}</div>
           </div>
         </div>
       </div>
-      <!-- /detail -->
-      <!-- sub total -->
-      <!-- div class="row product-sub-total-container">
-        <h5>商品小计</h5>
+
+      <div class="row total product-sub-total-container" style="height:40%;">
         <hr>
-        <div class="product-cnt">数量：13</div>
-        <div class="product-sub-total">金额：￥443.0</div>
-      </div -->
-      <div class="row total product-sub-total-container">
-        <h5>小计</h5>
-        <hr>
-        <ul class="nav nav-list">
-          <li>
-            <a href="#">
-              <span class="text-left pull-left">数量</span>
-              <span class="text-right pull-right">20</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <span class="text-left pull-left">金额</span>
-              <span class="text-right pull-right">￥400.0</span>
-            </a>
-          </li>
-        </ul>
+          <div class="span3">
+              <span class="">库存</span>
+              <input type="text" ng-model="item.amount">
+          </div>
+          <div class="span3">
+              <span class="">进货价</span>
+              <input type="text" ng-model="item.cost">
+          </div>
+          <div class="span3">
+              <span class="">销售价</span>
+              <input type="text" ng-model="item.sellingPrice">
+          </div>
+          <div class="span3">
+            <button type="button" class="btn btn-info btn-large settle glyphicon glyphicon-plus-sign" ng-click='save()'> 保存修改</button>
+          </div>
       </div>
       <!-- /sub total -->
       <!-- buttons -->
-      <div class="row detail-buttons">
+      <div class="row detail-buttons" style="height:12%;">
         <div class="buttons">
         <div class="button">
           <button type="button" class="btn btn-info btn-large settle glyphicon glyphicon-plus-sign" ng-click='new()'> 增加</button>

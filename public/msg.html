@@ -1,0 +1,27 @@
+
+<table class="table table-bordered table-striped">
+  <colgroup>
+    <col class="span2">
+    <col class="span7">
+    <col class="span3">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>消息</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="msg in msgs">
+      <td>{{msg.id}}</td>
+      <td>{{msg.content}}</td>
+      <td><input type="button" class="btn btn-info settle glyphicon pull-right" ng-click='dealOne({{msg.id}})' value="知道了"></input></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><a href="#/wadd/12345678">新商品上架</a></td>
+      <td><input type="button" class="btn btn-info settle glyphicon pull-right" ng-click='dealOne({{msg.id}})' value="知道了"></input></td>
+    </tr>
+  </tbody>
+</table>

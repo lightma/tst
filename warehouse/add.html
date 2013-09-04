@@ -2,11 +2,13 @@
     <div id="msg-div" class="alert fade"></div>
     <p>Add a new item:<br>
     <form ng-submit="addProduct()">
-    	<input type="text" ng-model="code" size="30" placeholder="product code">
-        <input type="text" ng-model="name" size="30" placeholder="product name">
-        <input type="text" ng-model="type" size="30" placeholder="product type">
-        <input type="text" ng-model="addr" size="30" placeholder="product addr">
-        <input type="text" ng-model="spec" size="30" placeholder="product spec">
+    	<input type="text" ng-model="code" size="30" placeholder="product code" ng-change="change()">
+        <input type="text" ng-model="name" size="30" placeholder="product name" disabled="{{disabled}}">
+        <input type="text" ng-model="img" size="30" placeholder="product img">
+        <input type="text" ng-model="type" size="30" placeholder="product type"  disabled="{{disabled}}">
+        <input type="text" ng-model="addr" size="30" placeholder="product addr"  disabled="{{disabled}}">
+        <input type="text" ng-model="spec" size="30" placeholder="product spec"  disabled="{{disabled}}">
+        <input type="checkbox" ng-model="warehouse" size="30">
         <button class="btn-primary" type="submit"><i class="icon-plus icon-white"></i></button>
         <a class="btn btn-primary" ng-click='back()'> back </a>
     </form>

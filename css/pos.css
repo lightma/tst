@@ -263,3 +263,22 @@ span.sub-total {
 .detail-buttons .buttons .button > button {
 	min-width: 40%;
 }
+
+.ui_tx_count{
+	position: absolute;
+	z-index: 3;
+	right: 2px;
+	bottom: 3px;
+	display: block;
+	background: #F56200;
+	padding: 0 4px 0 4px;
+	height: 12px;
+	line-height: 12px;
+	color: white!important;
+	font-size: 12px;
+	font-weight: bold;
+	overflow: hidden;
+	border-radius: 2px 2px 2px 2px;
+	cursor: pointer;
+	font-family: Arial;
+}

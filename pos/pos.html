@@ -1,141 +1,7 @@
 <div class="row full-height">
 	<div class="col-lg-12 full-height">
-		<!-- left nav -->
-		<div class="col-lg-3 left-nav full-height">
-			<!-- sale list -->
-			<div class="row sale-list">
-				<h5>订单</h5>
-				<hr>
-				<ul class="nav nav-list">
-					<li>
-						<a href="#">
-							<span class="cursor glyphicon glyphicon-play text-left"></span>
-							<span class="label sale-cnt text-left">1000</span>
-							<span class="sale-product text-center">光明爱琴海咖啡蛋糕</span>
-							<span class="sale-sub-total text-right">￥2000.0</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="label sale-cnt text-left">1000</span>
-							<span class="sale-product text-center">光明爱琴海咖啡蛋糕</span>
-							<span class="sale-sub-total text-right">￥2000.0</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="label sale-cnt text-left">1000</span>
-							<span class="sale-product text-center">光明爱琴海咖啡蛋糕</span>
-							<span class="sale-sub-total text-right">￥2000.0</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="label sale-cnt text-left">1000</span>
-							<span class="sale-product text-center">光明爱琴海咖啡蛋糕</span>
-							<span class="sale-sub-total text-right">￥2000.0</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="label sale-cnt text-left">1000</span>
-							<span class="sale-product text-center">光明爱琴海咖啡蛋糕</span>
-							<span class="sale-sub-total text-right">￥2000.0</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="label sale-cnt text-left">1000</span>
-							<span class="sale-product text-center">光明爱琴海咖啡蛋糕</span>
-							<span class="sale-sub-total text-right">￥2000.0</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="label sale-cnt text-left">1000</span>
-							<span class="sale-product text-center">光明爱琴海咖啡蛋糕</span>
-							<span class="sale-sub-total text-right">￥2000.0</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="label sale-cnt text-left">1000</span>
-							<span class="sale-product text-center">光明爱琴海咖啡蛋糕</span>
-							<span class="sale-sub-total text-right">￥2000.0</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="label sale-cnt text-left">1000</span>
-							<span class="sale-product text-center">光明爱琴海咖啡蛋糕</span>
-							<span class="sale-sub-total text-right">￥2000.0</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="label sale-cnt text-left">1000</span>
-							<span class="sale-product text-center">光明爱琴海咖啡蛋糕</span>
-							<span class="sale-sub-total text-right">￥2000.0</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="label sale-cnt text-left">1000</span>
-							<span class="sale-product text-center">光明爱琴海咖啡蛋糕</span>
-							<span class="sale-sub-total text-right">￥2000.0</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="label sale-cnt text-left">1000</span>
-							<span class="sale-product text-center">光明爱琴海咖啡蛋糕</span>
-							<span class="sale-sub-total text-right">￥2000.0</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="label sale-cnt text-left">1000</span>
-							<span class="sale-product text-center">光明爱琴海咖啡蛋糕</span>
-							<span class="sale-sub-total text-right">￥2000.0</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-			<!-- total -->
-			<div class="row total">
-				<h5>金额</h5>
-				<hr>
-				<ul class="nav nav-list">
-					<li>
-						<a href="#">
-							<span class="text-left pull-left">合计</span>
-							<span class="text-right pull-right">￥5000.0</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span class="text-left pull-left">折扣</span>
-							<span class="text-right pull-right">￥00.0</span>
-						</a>
-					</li>
-					<li class="sale-total active">
-						<a href="#">
-							<span class="text-left pull-left"><strong>应收</strong></span>
-							<span class="text-right pull-right"><strong>￥100,000.0</strong></span>
-						</a>
-					</li>
-				</ul>
-			</div>
-			<!-- settlement -->
-			<div class="row settlement">
-				<div class="buttons">
-				<button type="button" class="btn btn-info btn-large settle glyphicon glyphicon-shopping-cart"> 结算</button>
-				</div>
-			</div>
-		</div>
-		<!-- /left nav -->
 		<!-- product list -->
-		<div class="col-lg-6 full-height products-container">
+		<div class="col-lg-9 full-height products-container">
 			<div class="row search-container">
 				<h5>商品</h5>
 				<hr>
@@ -147,7 +13,7 @@
 			<hr>
 			<div class="row product-list" ng-controller="PosProductsListCtrl">
 				<div class="row product-row" ng-repeat="row in products">
-					<div class="col-lg-3" ng-repeat="product in row">
+					<div class="col-lg-6" ng-repeat="product in row">
 						<div class="thumbnail">
 							<img ng-src="{{product.img}}" class="img-responsive" alt="{{product.name}}">
 							<div class="caption">
