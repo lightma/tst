@@ -54,6 +54,7 @@ factory('DB', function(){
 	        keyPath: 'code'
 	      });
 	      store.createIndex("typeIndex", "type", { unique: false });
+	      var store = db.createObjectStore('msgQueue');
 	    };
 
 	    // Handle successful datastore access.

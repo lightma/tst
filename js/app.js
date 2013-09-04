@@ -14,10 +14,11 @@ angular.module('myApp', ['myApp.controllers', 'myApp.services','ngCookies']).
   config(['$routeProvider', function($routeProvider) {
     var access = routingConfig.accessLevels;
     $routeProvider.when('/wlist', {templateUrl: 'warehouse/list.html', controller: 'WarehouseListCtrl',access:access.admin});
-    $routeProvider.when('/wdetail/:productCode', {templateUrl: 'warehouse/detail.html', controller: 'WarehouseDeatilCtrl',access:access.admin});
+    $routeProvider.when('/wadd/:productCode', {templateUrl: 'warehouse/add.html', controller: 'WarehouseAddCtrl',access:access.admin});
     $routeProvider.when('/wadd', {templateUrl: 'warehouse/add.html', controller: 'WarehouseAddCtrl',access:access.admin});
     $routeProvider.when('/login', {templateUrl: 'public/login.html', controller: 'LoginCtrl',access:access.anon});
     $routeProvider.when('/init', {templateUrl: 'public/init.html', controller: 'InitCtrl',access:access.admin});
+    $routeProvider.when('/msg', {templateUrl: 'public/msg.html', controller: 'MsgCtrl',access:access.admin});
 //    $routeProvider.when('/pos', {templateUrl: 'pos/pos.html', controller: 'WarehouseAddCtrl',access:access.admin});
     $routeProvider.otherwise({redirectTo: '/wlist',access:access.admin});
   }]).
@@ -46,6 +47,20 @@ angular.module('myApp', ['myApp.controllers', 'myApp.services','ngCookies']).
           {
             $location.path('/login');
           }
+        });
+        $rootScope.noticeDisplay = "none";
+        $rootScope.$on("msgQueueChanged", function (DB) {
+          DB.count("msgQueue",function(count){
+            if(count>0)
+            {
+              $rootScope.msgCount = count;
+              $rootScope.noticeDisplay = "";
+            }
+            else
+            {
+              $rootScope.noticeDisplay = "none";
+            }
+          });
         });
         
   }
