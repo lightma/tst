@@ -8,6 +8,7 @@ angular.module('myApp.controllers', []).
           if(product)
           {
             $scope.item = product;
+            $scope.selectedProduct = product.code;
           }
           else
           {
@@ -19,12 +20,13 @@ angular.module('myApp.controllers', []).
       $scope.save = function(){
         DB.insert("warehouses",$scope.item,function(){
             //如何反馈结果
-            var a= 1;
+            //方案1：span和input重叠，后面设置按钮
+            //var a= 1;
         });
       };
       $scope.delete = function(){
         DB.delete("warehouses",$scope.item.code,function(){
-            //如何反馈结果
+            //如何调整selectedProduct?
             if($scope.byWhat == "byType")
             {
               for(var index in $scope.products){
@@ -58,29 +60,41 @@ angular.module('myApp.controllers', []).
       };
       $scope.byType = function(){
         $scope.byWhat = "byType";
-        $scope.item = null;
-        //$scope.item.img = 'default';
         $scope.types = ["饮料","食品","日化","调味品","香烟","其他"];
         if(!$scope.selectedType)
         {
           $scope.selectedType = "全部";
           DB.fetchAll('warehouses',function(sproducts) {
             $scope.products =  sproducts;
+            $scope.item = $scope.products[0];
+            $scope.selectedProduct = $scope.item.code;
+            if(!$scope.item)
+            {
+              //$scope.item.img = 'default';
+            }
             $scope.$apply();
           });
+        }
+        $scope.item = $scope.products[0];
+        $scope.selectedProduct = $scope.item.code;
+        if(!$scope.item)
+        {
+          //$scope.item.img = 'default';
         }
       };
       $scope.bySearch = function(){
         $scope.byWhat = "bySearch";
-        $scope.item = null;
-        //$scope.item.img = 'default';
+        $scope.item = $scope.sproducts[0];
+        $scope.selectedProduct = $scope.item.code;
+        if(!$scope.item)
+        {
+          //$scope.item.img = 'default';
+        }
 
       }
       $scope.change = function(){
         
         var searchText = this.searchText;
-        $scope.item = null;
-        //$scope.item.img = 'default';
         $scope.sproducts = []; 
         if(searchText.length>7&&!isNaN(searchText))
         {
@@ -91,10 +105,13 @@ angular.module('myApp.controllers', []).
                   products.push(product);
                   $scope.sproducts =  products;
                   $scope.item = product;
-                  $scope.amount = product.amount;
-                  $scope.cost = product.cost;
-                  $scope.sellingPrice = product.sellingPrice;
+                  $scope.selectedProduct = product.code;
                   $scope.$apply();
+                }
+                else
+                {
+                  $scope.item = null;
+                  //$scope.item.img = 'default';
                 }
             });
         }
@@ -106,6 +123,12 @@ angular.module('myApp.controllers', []).
         {
             DB.fetchAll('warehouses',function(sproducts) {
               $scope.products =  sproducts;
+              $scope.item = $scope.products[0];
+              $scope.selectedProduct = $scope.item.code;
+              if(!$scope.item)
+              {
+                //$scope.item.img = 'default';
+              }
               $scope.$apply();
             });
         }
@@ -113,6 +136,12 @@ angular.module('myApp.controllers', []).
         {
             DB.fetchItemsByIndex('warehouses','typeIndex',type,function(sproducts) {
               $scope.products =  sproducts;
+              $scope.item = $scope.products[0];
+              $scope.selectedProduct = $scope.item.code;
+              if(!$scope.item)
+              {
+                //$scope.item.img = 'default';
+              }
               $scope.$apply();
             });
         }

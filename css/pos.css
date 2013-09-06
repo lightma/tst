@@ -237,6 +237,7 @@ span.sub-total {
 	overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    margin-top: 3px;
 }
 .row .product-detail-container {
 	margin: 0;

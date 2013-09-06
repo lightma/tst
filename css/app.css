@@ -11,3 +11,10 @@ body {
 .products {
 	cursor :pointer;
 }
+
+.property-span {
+	padding-left: 5px;
+}
+.selected {
+	border: 2px solid #F3E009;
+}
