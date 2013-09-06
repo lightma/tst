@@ -8,28 +8,47 @@ angular.module('myApp.controllers', []).
           if(product)
           {
             $scope.item = product;
-            $scope.amount = product.amount;
-            $scope.cost = product.cost;
-            $scope.sellingPrice = product.sellingPrice;
           }
           else
           {
-            DB.fetchOne('products',productCode,function(product){
-              if(product)
-              {
-                $scope.item = product;
-              }
-              else
-              {
-                console.log("detail error: no product" + productCode );
-              }
-            });
+             console.log("detail error: no product" + productCode );
           }
           $scope.$apply();
         });
       };
       $scope.save = function(){
+        DB.insert("warehouses",$scope.item,function(){
+            //如何反馈结果
+            var a= 1;
+        });
+      };
+      $scope.delete = function(){
+        DB.delete("warehouses",$scope.item.code,function(){
+            //如何反馈结果
+            if($scope.byWhat == "byType")
+            {
+              for(var index in $scope.products){
+              if($scope.item.code==$scope.products[index].code)
+              {
+                $scope.products.splice(index,1);
+                break;
+              }
+            }
 
+            }
+            else
+            {
+              for(var index in $scope.sproducts){
+                if($scope.item.code==$scope.sproducts[index].code)
+                {
+                  $scope.sproducts.splice(index,1);
+                  break;
+                }
+              }
+            }
+            $scope.item = null;
+            $scope.$apply();
+        });
       };
       $scope.new = function() {
         $location.path('/wadd');
@@ -112,6 +131,13 @@ angular.module('myApp.controllers', []).
           $rootScope.$broadcast("msgQueueChanged", {});
         });
       }
+      $scope.dealAll = function()
+      {
+        DB.delete('msgQueue',msgID,function(){
+          
+        });
+        $rootScope.$broadcast("msgQueueChanged", {});
+      }
 
   })
   .controller('WarehouseDeatilCtrl', function($scope, DB) {
@@ -148,27 +174,6 @@ angular.module('myApp.controllers', []).
               }
           });
       }
-      /*
-      var searchText = $routeParams.productCode;
-      $scope.sproducts = []; 
-      $scope.searchText = searchText;
-      if(searchText.length>7&&!isNaN(searchText))
-      {
-          DB.fetchOne('products',searchText,function(product) {
-              if(product)
-              {
-                var products = [];
-                products.push(product);
-                $scope.sproducts =  products;
-                $scope.item = product;
-                $scope.amount = product.amount;
-                $scope.cost = product.cost;
-                $scope.sellingPrice = product.sellingPrice;
-                $scope.$apply();
-              }
-          });
-      }
-      */
     }
     $scope.change = function(){
 
@@ -198,20 +203,23 @@ angular.module('myApp.controllers', []).
     */
     $scope.addProduct = function(){
 
-      DB.insert('products',{'code': $scope.code, 
+      DB.insert('warehouses',{'code': $scope.code, 
         'name' : $scope.name,
         'type' : $scope.type,
         'addr' : $scope.addr,
         'img' : $scope.img ? $scope.img:"img/shoes1.jpg",
-        'spec' : $scope.spec
+        'spec' : $scope.spec,
+        'amount' : $scope.amount,
+        'sellingPrice' : $scope.sellingPrice,
+        'cost' : $scope.cost,
         },
         function()
         {
           $('#msg-div').addClass('alert-success').addClass('in').html("add ok!");
         });
-      if($scope.warehouse)
+      if($scope.product)
       {
-        DB.insert('warehouses',{'code': $scope.code, 
+        DB.insert('products',{'code': $scope.code, 
           'name' : $scope.name,
           'type' : $scope.type,
           'addr' : $scope.addr,

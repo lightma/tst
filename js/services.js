@@ -75,6 +75,7 @@ factory('DB', function(){
 	      console.log("Database error: " + e.target);
 	    };
 	  /**
+	   * @param {string} tablename .
 	   * Fetch all of the items in the datastore.
 	   * @param {function} callback A function that will be executed once the items
 	   *                            have been retrieved. Will be passed a param with
@@ -108,6 +109,9 @@ factory('DB', function(){
 	  };
 
 	  /**
+	   * @param {string} tablename .
+	   * @param {string} indexname .
+	   * @param  value .
 	   * Fetch items by index in the datastore.
 	   * @param {function} callback A function that will be executed once the items
 	   *                            have been retrieved.
@@ -152,6 +156,7 @@ factory('DB', function(){
 
 
 	  /**
+	   * @param {string} tablename .
 	   * @param {obj} item to be deleted.
 	   * @param {function} callback A callback function that will be executed if success
 	   */
@@ -177,9 +182,12 @@ factory('DB', function(){
 	    request.onerror = IDB.onerror;
 	  };
 
+//	  IDB.update = IDB.insert;
+
 
 	  /**
 	   * Delete a item.
+	   * @param {string} tablename .
 	   * @param {int} code The keyPath (code) of the prodect item .
 	   * @param {function} callback A callback function that will be executed if the 
 	   *                            delete is successful.
@@ -200,8 +208,8 @@ factory('DB', function(){
 	  };
 
 	  /**
-	   * Delete a item.
-	   * @param {int} code The keyPath (code) of the prodect item .
+	   * count table.
+	   * @param {string} tablename .
 	   * @param {function} callback A callback function that will be executed if the 
 	   *                            delete is successful.
 	   */
@@ -214,6 +222,26 @@ factory('DB', function(){
 	    request.onsuccess = function(e) {
 	      var count = e.target.result;
 	      callback(count);
+	    }
+	    
+	    request.onerror = function(e) {
+	      console.log(e);
+	    }
+	  };
+	  /**
+	   * clear table.
+	   * @param {string} tablename .
+	   * @param {function} callback A callback function that will be executed if the 
+	   *                            delete is successful.
+	   */
+	  IDB.clear = function(table,callback) {
+	    var transaction = db.transaction([table], 'readwrite');
+	    var objStore = transaction.objectStore(table);
+	    
+	    var request = objStore.clear();
+	    
+	    request.onsuccess = function() {
+	      callback();
 	    }
 	    
 	    request.onerror = function(e) {
