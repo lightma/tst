@@ -1,6 +1,74 @@
 <div class="hero-unit">
     <div id="msg-div" class="alert fade"></div>
     <p>Add a new item:<br>
+
+    <form class="form-horizontal" ng-submit="addProduct()" role="form">
+      <div class="form-group">
+        <label class="control-label col-lg-2" for="inputCode">条形码</label>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="inputCode" placeholder="product code" ng-model="code" ng-change="change()">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-lg-2" for="inputName">商品名称</label>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="inputName" placeholder="product name" ng-model="name" disabled="{{disabled}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-lg-2">商品类型</label>
+        <div class="col-lg-8 btn-group" ng-model="type" data-toggle="buttons-radio" disabled="{{disabled}}">
+          <button type="button" class="btn btn-primary">饮料</button>
+          <button type="button" class="btn btn-primary">食品</button>
+          <button type="button" class="btn btn-primary">日化</button>
+          <button type="button" class="btn btn-primary">调味品</button>
+          <button type="button" class="btn btn-primary">香烟</button>
+          <button type="button" class="btn btn-primary">其他</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-lg-2" for="inputCost">进货价</label>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="inputCost" placeholder="product cost" ng-model="cost">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-lg-2" for="inputPrice">销售价</label>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="inputPrice" placeholder="product sellingPrice" ng-model="sellingPrice">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-lg-2" for="inputAmount">库存</label>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="inputAmount" placeholder="product amount" ng-model="amount">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-lg-2" for="inputAddr">产地</label>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="inputAddr" placeholder="product addr" ng-model="addr" disabled="{{disabled}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-lg-2" for="inputSpec">商品描述</label>
+        <div class="col-lg-8">
+          <input type="text" class="form-control" id="inputSpec" placeholder="product spec" ng-model="spec" disabled="{{disabled}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-12">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-lg-2"></label>
+        <div class="col-lg-8">
+          <button type="submit" class="btn">add</button>
+          <button type="button" class="btn" ng-click='back()'>back</button>
+        </div>
+      </div>
+    </form>
+<!--
     <form ng-submit="addProduct()">
     	<input type="text" ng-model="code" size="30" placeholder="product code" ng-change="change()">
         <br>
@@ -23,4 +91,5 @@
         <a class="btn btn-primary" ng-click='back()'> back </a>
     </form>
     </p>
+-->
 </div>

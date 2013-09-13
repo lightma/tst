@@ -204,6 +204,7 @@ angular.module('myApp.controllers', []).
           });
       }
     }
+
     $scope.change = function(){
 
       $scope.disabled = '';
@@ -225,11 +226,6 @@ angular.module('myApp.controllers', []).
       }
     }
 
-    /*
-    setTimeout(function () {
-        $('#msg-div').removeClass('in')
-    }, 4000);
-    */
     $scope.addProduct = function(){
 
       DB.insert('warehouses',{'code': $scope.code, 
@@ -244,8 +240,18 @@ angular.module('myApp.controllers', []).
         },
         function()
         {
+          $scope.name = '';
+          $scope.code = '';
+          $scope.type = '';
+          $scope.addr = '';
+          $scope.spec = '';
+          $scope.amount = '';
+          $scope.sellingPrice = '';
+          $scope.cost = '';
+          $scope.disabled = '';
           $('#msg-div').addClass('alert-success').addClass('in').html("add ok!");
         });
+      /*
       if($scope.product)
       {
         DB.insert('products',{'code': $scope.code, 
@@ -257,12 +263,7 @@ angular.module('myApp.controllers', []).
           },function(){
           });
       }
-      $scope.name = '';
-      $scope.code = '';
-      $scope.type = '';
-      $scope.addr = '';
-      $scope.spec = '';
-      $scope.edit = '';
+      */
     };
     $scope.back = function() {
         $location.path('/wlist');
