@@ -141,7 +141,7 @@
 				<hr>
 				<form class="col-lg-12 navbar-form pull-left search-form">
 					<input type="hidden" ng-model="opStack"/>
-                   	<input type="text" class="form-control search" ng-model="searchText" ng-change="searchTextChange()" ui-keypress="{tab: 'selectProduct()'}" placeholder="按 条形码 或 商品名称/拼音首写字母 查找">
+                   	<input type="text" class="form-control search" ng-model="searchText" ng-change="searchTextChange()" ng-keypress="selectProduct($event)" placeholder="按 条形码 或 商品名称/拼音首写字母 查找">
                    	<div class="glyphicon glyphicon-barcode"></div>
                    </form>
 			</div>

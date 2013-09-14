@@ -1,5 +1,5 @@
 'use strict';
-angular.module('fsm', ['ui']).factory('fsm', function(){
+angular.module('fsm', []).factory('fsm', function(){
 	var fsm = new window.machina.Fsm({
 		initialState: "search",
 		states : {
@@ -9,7 +9,9 @@ angular.module('fsm', ['ui']).factory('fsm', function(){
 				}
 			},
 			'select_product' : {
-				'search' : function(scope) {}
+				'search' : function(scope) {},
+				'next' : function(scope) {},
+				'prev': function(scope) {}
 			},
 			'confirm_product' : {
 				'add' : function(scope) {},

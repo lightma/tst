@@ -99,7 +99,7 @@ span.sale-cnt {
 	overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    vertical-align: middle;
+	vertical-align: middle;
 }
 span.sale-product {
 	margin-left: 0.5em;
@@ -108,7 +108,7 @@ span.sale-product {
     text-overflow: ellipsis;
     width: 46%;
     display: inline-block;
-    vertical-align: middle;
+	vertical-align: middle;
 }
 span.sale-sub-total {
 	overflow: hidden;
@@ -117,7 +117,7 @@ span.sale-sub-total {
     text-align: right;
     width: 32%;
     display: inline-block;
-    vertical-align: middle;
+	vertical-align: middle;
 }
 .total {
 	position: relative;
@@ -200,6 +200,31 @@ span.sub-total {
 	position: relative;
 	height: 12%;
 }
+.search-container ul.nav{
+	position: absolute;
+	bottom: 0;
+	margin: 0;
+	padding-left: 0;
+	height: 38px;
+	width: 100%;
+	border:none;
+}
+.search-container .by-search {
+	position: absolute;
+	bottom: 0;
+	margin: 0;
+	margin-right: 15px;
+	right: 0;
+}
+.search-container ul.nav > li > a {
+	padding: 13px 20px;
+}
+.search-container .nav-tabs > li > a, .search-container .nav-tabs > li > a:hover, .search-container .nav-tabs > li > a:focus {
+	border-bottom: none;
+}
+.search-container .nav-tabs > li.active > a, .search-container .nav-tabs > li.active > a:hover, .search-container .nav-tabs > li.active > a:focus {
+	border-bottom: none;
+}
 .search-form {
 	position: absolute;
 	bottom: 0;
@@ -208,7 +233,7 @@ span.sub-total {
 }
 .search-form .search {
 	padding-left: 25px;
-	width: 90%;
+	width: 80%;
 }
 .search-form .glyphicon-barcode{
 	position: absolute;
@@ -230,6 +255,9 @@ span.sub-total {
 .product-row {
 	padding: 2px 0;
 }
+.product-row > div.col-lg-3 {
+	margin-bottom: 3px;
+}
 .thumbnail {
 	border: none;
 }
@@ -241,6 +269,7 @@ span.sub-total {
 	overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+	margin-top: 3px;
 }
 .row .product-detail-container {
 	margin: 0;
@@ -266,4 +295,23 @@ span.sub-total {
 }
 .detail-buttons .buttons .button > button {
 	min-width: 40%;
+}
+
+.ui_tx_count{
+	position: absolute;
+	z-index: 3;
+	right: 2px;
+	bottom: 3px;
+	display: block;
+	background: #F56200;
+	padding: 0 4px 0 4px;
+	height: 12px;
+	line-height: 12px;
+	color: white!important;
+	font-size: 12px;
+	font-weight: bold;
+	overflow: hidden;
+	border-radius: 2px 2px 2px 2px;
+	cursor: pointer;
+	font-family: Arial;
 }

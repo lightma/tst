@@ -147,13 +147,15 @@ angular.module('myApp.controllers', []).
           });
       });
     }
-}]).controller('PosCtrl', function($scope, fsm, ui){
+}]).controller('PosCtrl', function($scope, fsm){
 	$scope.searchTextChange = function(){
 		if ($scope.searchText != "" && fsm.state == "search") {
-			fsm.
+			console.log(fsm.state);
 		}
 	};
-	
+	$scope.selectProduct = function(e){
+		console.log(arguments);
+	}
 }).controller('PosProductsListCtrl', function ($scope) {
 	var product = function(){
 		this.name = "UGG哈哈这个鞋子不错喔",
