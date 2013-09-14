@@ -40,8 +40,8 @@
           <ul class="nav nav-tabs">
             <li data-ng-repeat="type in types" ng-class="{active:selectedType==type}" ng-click='getType(type)'><a>{{type}}</a></li>
             <li ng-class="{active:selectedType=='全部'}" ng-click="getType('全部')"><a>全部</a></li>
-            <input type="button" class="btn btn-info settle glyphicon pull-right" ng-click='bySearch()' value="搜索"></input>
           </ul>
+          <input type="button" class="btn btn-info settle glyphicon pull-right by-search" ng-click='bySearch()' value="搜索"></input>
         </div>
         <hr>
         <div class="row product-list">
