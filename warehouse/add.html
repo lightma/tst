@@ -1,8 +1,12 @@
 <div class="hero-unit">
-    <div id="msg-div" class="alert fade"></div>
-    <p>Add a new item:<br>
-
     <form class="form-horizontal" ng-submit="addProduct()" role="form">
+      <!--
+      <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-8">
+          <label class="control-label col-lg-8" for="inputCode">添加商品</label>
+        </div>
+      </div>
+      -->
       <div class="form-group">
         <label class="control-label col-lg-2" for="inputCode">条形码</label>
         <div class="col-lg-8">
@@ -17,13 +21,26 @@
       </div>
       <div class="form-group">
         <label class="control-label col-lg-2">商品类型</label>
-        <div class="col-lg-8 btn-group" ng-model="type" data-toggle="buttons-radio" disabled="{{disabled}}">
-          <button type="button" class="btn btn-primary">饮料</button>
-          <button type="button" class="btn btn-primary">食品</button>
-          <button type="button" class="btn btn-primary">日化</button>
-          <button type="button" class="btn btn-primary">调味品</button>
-          <button type="button" class="btn btn-primary">香烟</button>
-          <button type="button" class="btn btn-primary">其他</button>
+
+        <div class="col-lg-8 btn-group" data-toggle="buttons">
+          <label class="btn btn-primary">
+            <input type="radio" ng-model="type" value="饮料" disabled="{{disabled}}">饮料
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" ng-model="type" value="食品" disabled="{{disabled}}">食品
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" ng-model="type" value="日化" disabled="{{disabled}}">日化
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" ng-model="type" value="调味品" disabled="{{disabled}}">调味品
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" ng-model="type" value="香烟" disabled="{{disabled}}">香烟
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" ng-model="type" value="其他" disabled="{{disabled}}">其他
+          </label>
         </div>
       </div>
       <div class="form-group">
@@ -57,39 +74,16 @@
         </div>
       </div>
       <div class="form-group">
-        <div class="col-lg-12">
+        <label class="control-label col-lg-2"></label>
+        <div class="col-lg-8">
+          <button type="submit" class="btn">{{actionName}}</button>
+          <button type="button" class="btn" ng-click='back()'>返回</button>
         </div>
       </div>
       <div class="form-group">
         <label class="control-label col-lg-2"></label>
-        <div class="col-lg-8">
-          <button type="submit" class="btn">add</button>
-          <button type="button" class="btn" ng-click='back()'>back</button>
+        <div class="col-lg-8 alert fade" id="msg-div">
         </div>
       </div>
     </form>
-<!--
-    <form ng-submit="addProduct()">
-    	<input type="text" ng-model="code" size="30" placeholder="product code" ng-change="change()">
-        <br>
-        <input type="text" ng-model="name" size="30" placeholder="product name" disabled="{{disabled}}">
-        <br>
-        <input type="text" ng-model="img" size="30" placeholder="product img">
-        <br>
-        <input type="text" ng-model="type" size="30" placeholder="product type"  disabled="{{disabled}}">
-        <br>
-        <input type="text" ng-model="addr" size="30" placeholder="product addr"  disabled="{{disabled}}">
-        <br>
-        <input type="text" ng-model="spec" size="30" placeholder="product spec"  disabled="{{disabled}}">
-        <br>
-        <input type="text" ng-model="amount" size="30" placeholder="amount">
-        <br>
-        <input type="text" ng-model="sellingPrice" size="30" placeholder="product sellingPrice">
-        <input type="text" ng-model="cost" size="30" placeholder="product cost">
-        <input type="checkbox" ng-model="product" size="30">
-        <button class="btn-primary" type="submit"><i class="icon-plus icon-white"></i></button>
-        <a class="btn btn-primary" ng-click='back()'> back </a>
-    </form>
-    </p>
--->
 </div>

@@ -71,6 +71,10 @@
           <img ng-src="{{item.img}}" class="img-responsive" alt="{{item.name}}">
           <div class="caption">
             <div class="span3">
+              <span class="label">条码</span>
+              <span class="property-span">{{item.code}}</span>
+            </div>
+            <div class="span3">
               <span class="label">名称</span>
               <span class="property-span">{{item.name}}</span>
             </div>
@@ -86,33 +90,28 @@
               <span class="label">产地</span>
               <span class="property-span">{{item.addr}}</span>
             </div>
+            <div class="span3">
+              <span class="label">库存</span>
+              <span class="property-span">{{item.amount}}</span>
+            </div>
+            <div class="span3">
+              <span class="label">进货价</span>
+              <span class="property-span">{{item.cost}}</span>
+            </div>
+            <div class="span3">
+              <span class="label">销售价</span>
+              <span class="property-span">{{item.sellingPrice}}</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="row total product-sub-total-container" style="height:40%;">
-        <hr>
-          <div class="span3">
-              <span class="">库存</span>
-              <input type="text" ng-model="item.amount">
-          </div>
-          <div class="span3">
-              <span class="">进货价</span>
-              <input type="text" ng-model="item.cost">
-          </div>
-          <div class="span3">
-              <span class="">销售价</span>
-              <input type="text" ng-model="item.sellingPrice">
-          </div>
-          <div class="span3">
-              <button type="button" class="btn btn-info btn-large settle glyphicon glyphicon-plus-sign" ng-click='save()'> 修改</button>
-              <button type="button" class="btn btn-success btn-large settle glyphicon glyphicon-minus-sign" ng-click='delete()'> 删除</button>
-          </div>
-      </div>
-      <!-- /sub total -->
-      <!-- buttons -->
-      <div class="row detail-buttons" style="height:12%;">
+      <div class="row detail-buttons" style="height:50%;">
         <div class="buttons">
+        <div class="button">
+          <button type="button" class="btn btn-info btn-large settle glyphicon glyphicon-plus-sign" ng-click='modify(item.code)'> 修改</button>
+          <button type="button" class="btn btn-success btn-large settle glyphicon glyphicon-minus-sign" ng-click='delete()'> 删除</button>
+        </div>
         <div class="button">
           <button type="button" class="btn btn-info btn-large settle glyphicon glyphicon-plus-sign" ng-click='new()'> 增加</button>
           <button type="button" class="btn btn-success btn-large settle glyphicon glyphicon-minus-sign" ng-click='import()'> 导入</button>
