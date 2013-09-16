@@ -1,11 +1,28 @@
 <div class="hero-unit">
-    <p>login:<br>
-    <form ng-submit="login()">
-    	<input type="text" ng-model="username" size="30" placeholder="username">
-        <input type="text" ng-model="password" size="30" placeholder="password">
-        auto sign in<input type="checkbox" ng-model="auto" size="30">
-        <button class="btn-primary" type="submit">login</button>
-        <a class="btn btn-primary" href="#/wlist/"> back </a>
+    <form class="form-horizontal" ng-submit="login()" role="form">
+      <div class="form-group">
+        <label class="control-label col-lg-4" for="inputUsername">用户名</label>
+        <div class="col-lg-4">
+          <input type="text" class="form-control" id="inputUsername" placeholder="username" ng-model="username">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-lg-4" for="inputPassword">密码</label>
+        <div class="col-lg-4">
+          <input type="text" class="form-control" id="inputPassword" placeholder="password" ng-model="password">
+        </div>
+      </div>
+	  <div class="form-group">
+	  	<label class="control-label col-lg-4"></label>
+	    <div class="col-lg-4">
+			<input type="checkbox" ng-model="auto">自动登录
+	    </div>
+	  </div>
+      <div class="form-group">
+        <label class="control-label col-lg-4"></label>
+        <div class="col-lg-4">
+          <button type="submit" class="btn">登录</button>
+        </div>
+      </div>
     </form>
-    </p>
 </div>

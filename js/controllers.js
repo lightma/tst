@@ -17,12 +17,8 @@ angular.module('myApp.controllers', []).
           $scope.$apply();
         });
       };
-      $scope.save = function(){
-        DB.insert("warehouses",$scope.item,function(){
-            //如何反馈结果
-            //方案1：span和input重叠，后面设置按钮
-            //var a= 1;
-        });
+      $scope.modify = function(code){
+        $location.path('/wadd/'+code);
       };
       $scope.delete = function(){
         DB.delete("warehouses",$scope.item.code,function(){
@@ -67,27 +63,45 @@ angular.module('myApp.controllers', []).
           DB.fetchAll('warehouses',function(sproducts) {
             $scope.products =  sproducts;
             $scope.item = $scope.products[0];
-            $scope.selectedProduct = $scope.item.code;
-            if(!$scope.item)
+            if($scope.item)
             {
+              $scope.selectedProduct = $scope.item.code;
+            }
+            else
+            {
+              $scope.item = null;
+              $scope.selectedProduct = null;
               //$scope.item.img = 'default';
             }
             $scope.$apply();
           });
         }
-        $scope.item = $scope.products[0];
-        $scope.selectedProduct = $scope.item.code;
-        if(!$scope.item)
+        else
         {
-          //$scope.item.img = 'default';
+          if($scope.products[0])
+          {
+            $scope.item = $scope.products[0];
+            $scope.selectedProduct = $scope.item.code;
+          }
+          else
+          {
+            $scope.item = null;
+            $scope.selectedProduct = null;
+            //$scope.item.img = 'default';
+          }
         }
       };
       $scope.bySearch = function(){
         $scope.byWhat = "bySearch";
-        $scope.item = $scope.sproducts[0];
-        $scope.selectedProduct = $scope.item.code;
-        if(!$scope.item)
+        if($scope.sproducts.length>0)
         {
+          $scope.item = $scope.sproducts[0];
+          $scope.selectedProduct = $scope.item.code;
+        }
+        else
+        {
+          $scope.item = null;
+          $scope.selectedProduct = null;
           //$scope.item.img = 'default';
         }
 
@@ -95,7 +109,10 @@ angular.module('myApp.controllers', []).
       $scope.change = function(){
         
         var searchText = this.searchText;
-        $scope.sproducts = []; 
+        $scope.sproducts = [];
+        $scope.item = null;
+        $scope.selectedProduct = null;
+        //$scope.item.img = 'default';
         if(searchText.length>7&&!isNaN(searchText))
         {
             DB.fetchOne('warehouses',searchText,function(product) {
@@ -108,26 +125,23 @@ angular.module('myApp.controllers', []).
                   $scope.selectedProduct = product.code;
                   $scope.$apply();
                 }
-                else
-                {
-                  $scope.item = null;
-                  //$scope.item.img = 'default';
-                }
             });
         }
       }
       $scope.getType = function(type){
         $scope.selectedType = type;
+        $scope.item = null;
+        $scope.selectedProduct = null;
+        //$scope.item.img = 'default';
 
         if(type=='全部')
         {
             DB.fetchAll('warehouses',function(sproducts) {
-              $scope.products =  sproducts;
-              $scope.item = $scope.products[0];
-              $scope.selectedProduct = $scope.item.code;
-              if(!$scope.item)
+              $scope.products =  sproducts;                     
+              if(sproducts[0])
               {
-                //$scope.item.img = 'default';
+                $scope.item = $scope.products[0];    
+                $scope.selectedProduct = $scope.item.code;              
               }
               $scope.$apply();
             });
@@ -135,12 +149,11 @@ angular.module('myApp.controllers', []).
         else
         {
             DB.fetchItemsByIndex('warehouses','typeIndex',type,function(sproducts) {
-              $scope.products =  sproducts;
-              $scope.item = $scope.products[0];
-              $scope.selectedProduct = $scope.item.code;
-              if(!$scope.item)
+              $scope.products =  sproducts;             
+              if(sproducts[0])
               {
-                //$scope.item.img = 'default';
+                $scope.item = $scope.products[0];
+                $scope.selectedProduct = $scope.item.code;
               }
               $scope.$apply();
             });
@@ -169,28 +182,18 @@ angular.module('myApp.controllers', []).
       }
 
   })
-  .controller('WarehouseDeatilCtrl', function($scope, DB) {
-      DB.fetchOne('products',$routeParams.productCode,function(product){
-          $scope.dname = product.name;
-          $scope.dcode = product.code;
-          $scope.dtype = product.type;
-          $scope.daddr = product.addr;
-          $scope.dspec = product.spec;
-          $scope.$apply();
-      });
-      $scope.save = function(){ 
-      };
-  })
   .controller('WarehouseAddCtrl', function ($scope,$routeParams,$location,DB) {
     
+    $scope.actionName = "添加";
     if($routeParams.productCode)
     {
+      $scope.actionName = "保存";
       $scope.code = $routeParams.productCode;
       $scope.disabled = '';
       var productCode = $scope.code
       if(productCode.length>7&&!isNaN(productCode))
       {
-          DB.fetchOne('products',productCode,function(product) {
+          DB.fetchOne('warehouses',productCode,function(product) {
               if(product)
               {
                 $scope.name =  product.name;
@@ -198,8 +201,26 @@ angular.module('myApp.controllers', []).
                 $scope.type =  product.type;
                 $scope.addr =  product.addr;
                 $scope.spec =  product.spec;
+                $scope.amount = product.amount;
+                $scope.sellingPrice = product.sellingPrice;
+                $scope.cost = product.cost;
                 $scope.disabled = 'disabled';
                 $scope.$apply();
+              }
+              else
+              {
+                DB.fetchOne('products',productCode,function(product) {
+                    if(product)
+                    {
+                      $scope.name =  product.name;
+                      $scope.code =  product.code;
+                      $scope.type =  product.type;
+                      $scope.addr =  product.addr;
+                      $scope.spec =  product.spec;
+                      $scope.disabled = 'disabled';
+                      $scope.$apply();
+                    }
+                });
               }
           });
       }
@@ -208,7 +229,8 @@ angular.module('myApp.controllers', []).
     $scope.change = function(){
 
       $scope.disabled = '';
-      var productCode = $scope.code
+      $('#msg-div').addClass('out');
+      var productCode = $scope.code;
       if(productCode.length>7&&!isNaN(productCode))
       {
           DB.fetchOne('products',productCode,function(product) {
