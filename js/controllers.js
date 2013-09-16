@@ -17,8 +17,11 @@ angular.module('myApp.controllers', []).
           $scope.$apply();
         });
       };
-      $scope.modify = function(code){
-        $location.path('/wadd/'+code);
+      $scope.modify = function(productCode){
+        if(productCode.length>7&&!isNaN(productCode))
+        {
+          $location.path('/wadd/'+productCode);
+        }
       };
       $scope.delete = function(){
         DB.delete("warehouses",$scope.item.code,function(){
@@ -32,7 +35,6 @@ angular.module('myApp.controllers', []).
                 break;
               }
             }
-
             }
             else
             {
@@ -45,6 +47,7 @@ angular.module('myApp.controllers', []).
               }
             }
             $scope.item = null;
+            //$scope.item.img = 'default';
             $scope.$apply();
         });
       };
@@ -182,7 +185,7 @@ angular.module('myApp.controllers', []).
       }
 
   })
-  .controller('WarehouseAddCtrl', function ($scope,$routeParams,$location,DB) {
+  .controller('WarehouseAddCtrl', function ($scope,$routeParams,$location,DB,Auth) {
     
     $scope.actionName = "添加";
     if($routeParams.productCode)
@@ -224,6 +227,14 @@ angular.module('myApp.controllers', []).
               }
           });
       }
+    }
+
+    $scope.privateProduct = function()
+    {
+      var user = Auth.user();
+      //取得偏移量
+      $scope.code = user.id+'123';
+      $scope.type = "自建商品";
     }
 
     $scope.change = function(){

@@ -293,6 +293,7 @@ factory('DB', function(){
                 user.role = userRoles.admin;
                 user.value = user.username;
                 user.dbname = 'test';
+                user.id = 1234567;
                 changeUser(user);
                 if(user.auto==true)
                 {

@@ -9,7 +9,10 @@
       -->
       <div class="form-group">
         <label class="control-label col-lg-2" for="inputCode">条形码</label>
-        <div class="col-lg-8">
+        <div class="input-group col-lg-8">
+          <span class="input-group-btn">
+            <button class="btn" type="button" ng-click='privateProduct()' disabled="{{disabled}}">自建商品</button>
+          </span>
           <input type="text" class="form-control" id="inputCode" placeholder="product code" ng-model="code" ng-change="change()">
         </div>
       </div>
@@ -37,6 +40,9 @@
           </label>
           <label class="btn btn-primary">
             <input type="radio" ng-model="type" value="香烟" disabled="{{disabled}}">香烟
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" ng-model="type" value="自建商品" disabled="{{disabled}}">自建商品
           </label>
           <label class="btn btn-primary">
             <input type="radio" ng-model="type" value="其他" disabled="{{disabled}}">其他
