@@ -246,14 +246,14 @@ span.sub-total {
 }
 .product-list {
 	background: transparent;
-	height: 84%;
+	height: 85%;
 	border: none;
 	-webkit-box-shadow: none;
 	overflow: auto;
 	overflow-x: hidden;
 }
 .product-row {
-	padding: 2px 0;
+	padding: 0;
 }
 .product-row > div.col-lg-3 {
 	margin-bottom: 3px;
@@ -261,15 +261,60 @@ span.sub-total {
 .thumbnail {
 	border: none;
 }
-.thumbnail .caption {
-	color: rgb(200, 200, 200);
-	padding: 3px 0;
+.thumbnails {
+	list-style: none;
+	border: none;
 }
-.thumbnail .caption div{
+
+.thumbnails .thumbnail {
+  clear: both;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: block;
+  background-color: #3a3f44;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  -webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.thumbnails .thumbnail .carriage {
+ 	display: table-cell;
+	vertical-align: middle;
+ }
+.thumbnails .thumbnail > img {
+  display: block;
+  max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.thumbnails .thumbnail > a {
+	display:block;
+	float:left;
+	margin: 0;
+	width: 100%;
+	position: relative;
 	overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-	margin-top: 3px;
+}
+.thumbnails .thumbnail  > a:hover {
+	background-color: #202328;
+	color: #fff;
+}
+.thumbnail .caption {
+	padding: 0;
+}
+.thumbnails .thumbnail .caption .name {
+	font-size: 18px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	width: 330px;
+	vertical-align: middle;
+	display: block;
 }
 .row .product-detail-container {
 	margin: 0;
