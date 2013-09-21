@@ -264,6 +264,7 @@ span.sub-total {
 .thumbnails {
 	list-style: none;
 	border: none;
+	padding-left: 15px;
 }
 
 .thumbnails .thumbnail {
@@ -299,12 +300,16 @@ span.sub-total {
 	width: 100%;
 	position: relative;
 	overflow: hidden;
+	padding: 3px;
 }
 .thumbnails .thumbnail  > a:hover {
 	background-color: #202328;
 	color: #fff;
 }
 .thumbnail .caption {
+	padding: 0 0 0 15px;
+}
+.product-img {
 	padding: 0;
 }
 .thumbnails .thumbnail .caption .name {
