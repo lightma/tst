@@ -147,7 +147,7 @@ angular.module('myApp.controllers', []).
           });
       });
     }
-}]).controller('PosCtrl', ['$scope', 'PosFsm', function($scope, PosFsm){
+}]).controller('PosCtrl', ['$scope', 'PosFsm', function($scope, fsm){
 	$scope.searchTextChange = function(){
 		if ($scope.searchText != "" && fsm.state == "search") {
 			console.log(fsm.state);
