@@ -1,5 +1,5 @@
 'use strict';
-angular.module('fsm', []).factory('fsm', function(){
+angular.module('myApp.services').factory('PosFsm', function(){
 	var fsm = new window.machina.Fsm({
 		initialState: "search",
 		states : {

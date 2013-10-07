@@ -147,7 +147,7 @@ angular.module('myApp.controllers', []).
           });
       });
     }
-}]).controller('PosCtrl', function($scope, fsm){
+}]).controller('PosCtrl', ['$scope', 'PosFsm', function($scope, PosFsm){
 	$scope.searchTextChange = function(){
 		if ($scope.searchText != "" && fsm.state == "search") {
 			console.log(fsm.state);
@@ -156,7 +156,7 @@ angular.module('myApp.controllers', []).
 	$scope.selectProduct = function(e){
 		console.log(arguments);
 	}
-}).controller('PosProductsListCtrl', function ($scope) {
+}]).controller('PosProductsListCtrl', function ($scope) {
 	var product = function(){
 		this.name = "UGG哈哈这个鞋子不错喔",
 		this.cost = 20;
