@@ -21,7 +21,7 @@ angular.module('myApp', ['myApp.controllers', 'myApp.services','ngCookies']).
     $routeProvider.when('/pos', {templateUrl: 'pos/pos.html', controller: 'PosCtrl',access:access.admin});
     $routeProvider.otherwise({redirectTo: '/pos'});
   }]).
-  run(['$rootScope', '$location', 'Auth','DB', function ($rootScope, $location, Auth) {
+  run(['$rootScope', '$location', 'Auth','DB', function ($rootScope, $location, Auth) {/*
         chrome.storage.local.get('user',function(value){
           if(value.user)
           {
@@ -47,7 +47,7 @@ angular.module('myApp', ['myApp.controllers', 'myApp.services','ngCookies']).
             $location.path('/login');
           }
         });
-        
+        */
   }
   /*
   ,function($http,$timeout){

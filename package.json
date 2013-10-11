@@ -1,0 +1,17 @@
+{
+  "name": "To-Do List",
+  "description": "A simple to-do list application.",
+  "version": "0.1",
+  "manifest_version": 2,
+  "main" : "index.html",
+  "window" : {
+  	"frame" : true,
+  	"toolbar" : true,
+  	"icon" : "img/icon-128.png",
+  	"title" : "todo nw",
+  	"min_width" : 1024,
+  	"min_height" : 768,
+  	"width" : 1024,
+  	"height" : 768
+  }
+}
